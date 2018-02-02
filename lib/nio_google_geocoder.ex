@@ -30,7 +30,10 @@ defmodule NioGoogleGeocoder do
 
   # Executes the geocoding request and returns a tuple starting with :ok or :error
   defp get(url) do
-    case HTTPoison.get(url, [], []) do
+    require Logger
+    response = HTTPoison.get(url, [], [])
+    Logger.info("GEOCODING RAW RESPONSE: inspect #{response}")
+    case response do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}}
         ->
           case body |> Poison.decode! do
