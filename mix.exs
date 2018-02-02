@@ -21,7 +21,7 @@ defmodule NioGoogleGeocoder.Mixfile do
       {:ecto, "~> 1.1"},
       {:httpoison, "~> 0.9.0"},
       {:poison, "~> 1.5"},
-      {:hackney, "1.6.1", override: true}
+      {:hackney, "~> 1.7", override: true}
     ]
   end
 
