@@ -32,10 +32,10 @@ defmodule NioGoogleGeocoder do
   defp get(url) do
     require Logger
     response = HTTPoison.get(url, [], [])
-    Logger.info("GEOCODING RAW RESPONSE: inspect #{response}")
     case response do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}}
         ->
+          Logger.info("GEOCODING RAW RESPONSE: #{body}")
           case body |> Poison.decode! do
             %{"results" => results, "status" => _}
               -> {:ok, results}
